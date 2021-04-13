@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "id": 1, "name": "Dima", "capsule": 4 },
+    { "id": 2, "name": "Ayelet", "capsule": 4 },
+    { "id": 3, "name": "David", "capsule": 4 },
+    { "id": 4, "name": "Netta", "capsule": 4 },
+    { "id": 5, "name": "Adi", "capsule": 4 },
+    { "id": 6, "name": "Eyal", "capsule": 4 },
+    { "id": 7, "name": "Yossi", "capsule": 4 }
+  ]
+}
