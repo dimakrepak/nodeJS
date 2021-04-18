@@ -16,21 +16,21 @@ export default function Main() {
     const [amount, setAmount] = useState('')
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/bank/users')
+        axios.get('https://bank-api-apple.herokuapp.com/api/bank/users')
             .then((request) => {
                 setUsers(request.data.users)
             })
     })
     const getById = () => {
         setInputValue('')
-        axios.get(`http://localhost:5000/api/bank/users/${inputValue}`)
+        axios.get(`https://bank-api-apple.herokuapp.com/api/bank/users/${inputValue}`)
             .then((request) => {
                 console.log(request.data.user);
                 // setUser(request.data.user)
             })
     }
     const addUser = () => {
-        axios.post(`http://localhost:5000/api/bank/users`,
+        axios.post(`https://bank-api-apple.herokuapp.com/api/bank/users`,
             {
                 id: addId,
                 cash: addCash,
@@ -39,7 +39,7 @@ export default function Main() {
         )
     }
     const handleTransfer = () => {
-        axios.put(`http://localhost:5000/api/bank/transfer`,
+        axios.put(`https://bank-api-apple.herokuapp.com/api/bank/transfer`,
             {
                 from: fromId,
                 to: toId,
