@@ -77,7 +77,16 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
     // }));
     // 3.3 - Write a MongoDb query to get restaurants that include
     // reviews from a specific date.
-    db.collection('restaurants').find({ reviews: { date: new Date('01/01/2020') } }).toArray((err, result) => {
+    db.collection('restaurants').find({ reviews: { $in:[new Date('01/01/2020') ]} }).toArray((err, result) => {
         console.log(result);
     })
+    // db.collection('rests').find({}).toArray((error, res) => {
+    //     res.forEach((r) => {
+    //         const filtered = r.reviews.filter((r2) => {
+    //             const date = new Date('01/01/2017')
+    //             return r2.date > date
+    //         })
+    //         console.log(filtered)
+    //     })
+    // })
 })
