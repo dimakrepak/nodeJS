@@ -32,16 +32,38 @@ const getActive = (req, res) => {
         return res.send(products)
     })
 }
-const getRange = (req, res) => {
-    const { active } = req.params
-    productsModel.find({ 'details.price': { $gt: 50, $lt: 100 } }).then((products) => {
-        return res.send(products)
-    })
+const getRange = async (req, res) => {
+    const { min, max } = req.body
+    const rangeProduct = await productsModel.find({ 'details.price': { $gt: min, $lt: max } })
+    return res.send(rangeProduct)
+}
+const updateActive = async (req, res) => {
+    const { id } = req.params
+    const { isActive } = req.body
+    try {
+        const product = await productsModel.findByIdAndUpdate(id, { isActive })
+        if (!product) return res.status(404).send()
+        res.send(product)
+    } catch (err) {
+        res.status(400).send(e)
+    }
+}
+const deleteProduct = async (req, res) => {
+    const { id } = req.params
+    try {
+        const product = await productsModel.findByIdAndDelete({ id })
+        if (!product) res.status(404).send()
+        res.send(product)
+    } catch (err) {
+        res.status(500).send()
+    }
 }
 module.exports = {
     create: createProduct,
     getAll: getProducts,
     getProduct,
     getActive,
-    getRange
+    getRange,
+    updateActive,
+    deleteProduct
 }
